@@ -47,19 +47,16 @@ def main():
         list_accounts()
 
 def add_account(account):
-    pass
+    print(f"add {account}")
 
 def get_account(account):
-    pass
+    print(f"get {account}")
 
 def update_password(account):
-    pass
+    print(f"update {account}")
 
 def delete_account(account):
-    pass
+    print(f"delete {account}")
 
 def list_accounts():
-    pass
-
-def test():
-    storage.test()
+    print("list accounts")
