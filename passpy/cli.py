@@ -1,8 +1,6 @@
 import passpy.storage as storage
 import passpy.crypto as crypto
 import argparse
-from dotenv import load_dotenv
-load_dotenv()
 
 parser = argparse.ArgumentParser(
     prog="Passpy",
