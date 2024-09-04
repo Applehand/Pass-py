@@ -1,0 +1,6 @@
+/venv/
+__pycache__
+.env
+/passpy.egg-info/
+/dist/
+/build/
