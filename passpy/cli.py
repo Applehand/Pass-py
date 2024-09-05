@@ -68,8 +68,8 @@ def update_password(account, password):
     print(f"Password for '{account}' updated successfully.")
 
 def delete_account(account):
-    storage.delete_account(account)
-    print(f"Account '{account}' deleted successfully.")
+    result = storage.delete_account(account)
+    print(result)
 
 def list_accounts():
     accounts = storage.list_accounts()

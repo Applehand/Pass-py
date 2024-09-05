@@ -52,9 +52,18 @@ def update_password(account, encrypted_pass):
 
 def delete_account(account):
     def query(cursor, account):
-        cursor.execute("DELETE FROM accounts WHERE account_name = ?", (account,))
+        cursor.execute("SELECT * FROM accounts WHERE account_name = ?", (account,))
+        result = cursor.fetchone()
+        
+        if result:
+            cursor.execute("DELETE FROM accounts WHERE account_name = ?", (account,))
+            res_text = f"Account '{account}' successfully deleted."
+        else:
+            res_text = f"Account '{account}' does not exist."
+        
+        return res_text
     
-    execute_db_query(query, account)
+    return execute_db_query(query, account)
 
 def list_accounts():
     def query(cursor):
