@@ -1,6 +1,7 @@
 import passpy.storage as storage
 import passpy.crypto as crypto
 import argparse
+import pyperclip
 
 fernet_key = crypto.get_fernet_key()
 
@@ -57,7 +58,9 @@ def get_account(account):
     if not encryped_pass:
         print("Account not found.")
     password = crypto.decrypt_password(encryped_pass, fernet_key)
+    pyperclip.copy(password)
     print(f"Password for '{account}': {password}")
+    print("Password copied to clipboard!")
 
 def update_password(account, password):
     new_encryped_password = crypto.encrypt_password(password)

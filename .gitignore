@@ -4,3 +4,4 @@ __pycache__
 /passpy.egg-info/
 /dist/
 /build/
+data.db
