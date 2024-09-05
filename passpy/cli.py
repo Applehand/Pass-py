@@ -14,7 +14,7 @@ subparsers = parser.add_subparsers(dest="command")
 # Add command
 parser_add = subparsers.add_parser("add", help="Add a new account and an associated password.")
 parser_add.add_argument("account", help="The username, email, or domain to be associated with a password.")
-parser_add.add_argument("password", help="The password to be securely stored and associated with an account.")
+parser_add.add_argument("password", nargs="?", help="The password to securely store (optional). If not provided, a secure password will be generated.")
 
 # Get command
 parser_get = subparsers.add_parser("get", help="Retrieve a password for an account.")
@@ -23,7 +23,7 @@ parser_get.add_argument("account", help="The username, email, or domain to retri
 # Update command
 parser_update = subparsers.add_parser("update", help="Update an existing password with a new one.")
 parser_update.add_argument("account", help="The username, email, or domain to update the password for.")
-parser_update.add_argument("password", help="The new password that will replace the old one.")
+parser_update.add_argument("password", nargs="?", help="The new password to update (optional). If not provided, a secure password will be generated.")
 
 # Delete command
 parser_delete = subparsers.add_parser("delete", help="Delete an account.")
@@ -48,10 +48,14 @@ def main():
     elif args.command == "list":
         list_accounts()
 
-def add_account(account, password):
+def add_account(account, password=None):
+    if not password:
+        password = crypto.generate_secure_password()
+        print("Generated a password since none was given.")
     encryped_pass = crypto.encrypt_password(password, fernet_key)
     storage.add_account(account, encryped_pass)
-    print(f"Account '{account}' added successfully.")
+    pyperclip.copy(password)
+    print(f"Account '{account}' added successfully. Password copied to clipboard.")
 
 def get_account(account):
     encryped_pass = storage.get_password(account)
@@ -62,10 +66,14 @@ def get_account(account):
     pyperclip.copy(password)
     print("Password copied to clipboard!")
 
-def update_password(account, password):
-    new_encryped_password = crypto.encrypt_password(password, fernet_key)
-    storage.update_password(account, new_encryped_password)
-    print(f"Password for '{account}' updated successfully.")
+def update_password(account, password=None):
+    if not password:
+        password = crypto.generate_secure_password()
+        print("Generated a password since none was given.")
+    encryped_pass = crypto.encrypt_password(password, fernet_key)
+    storage.update_password(account, encryped_pass)
+    pyperclip.copy(password)
+    print(f"Password for '{account}' updated successfully! Password copied to clipboard.")
 
 def delete_account(account):
     result = storage.delete_account(account)

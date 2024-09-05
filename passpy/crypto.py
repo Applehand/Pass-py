@@ -1,5 +1,7 @@
 from cryptography.fernet import Fernet
 import os
+import secrets
+import string
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -49,3 +51,7 @@ def decrypt_password(encrypted_password: bytes, key: bytes) -> str:
     decrypted_password = cipher_suite.decrypt(encrypted_password)
 
     return decrypted_password.decode()
+
+def generate_secure_password():
+    characters = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(secrets.choice(characters) for i in range(16))
