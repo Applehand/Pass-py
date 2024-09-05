@@ -11,7 +11,9 @@ pip install git+https://github.com/Applehand/Pass-py.git
 
 ## Usage
 
-- **Add a new account**:
+### **Add a new account**:
+If no password is given, one will be generated for you.
+
 
   ```bash
   passpy add <account> <password>
@@ -23,7 +25,7 @@ pip install git+https://github.com/Applehand/Pass-py.git
   passpy add my_email@example.com thisismypassword1
   ```
 
-- **Retrieve an account password**:
+### **Retrieve an account password**:
 
   ```bash
   passpy get <account>
@@ -35,8 +37,8 @@ pip install git+https://github.com/Applehand/Pass-py.git
   passpy get my_email@example.com
   ```
 
-- **Update an existing account password**:
-
+### **Update an existing account password**:
+If no password is given, one will be generated for you.
   ```bash
   passpy update <account> <password>
   ```
@@ -47,7 +49,7 @@ pip install git+https://github.com/Applehand/Pass-py.git
   passpy update my_email@example.com thisismynewpassword2
   ```
 
-- **Delete an account**:
+### **Delete an account**:
 
   ```bash
   passpy delete <account>
@@ -59,7 +61,7 @@ pip install git+https://github.com/Applehand/Pass-py.git
   passpy delete my_email@example.com
   ```
 
-- **List all accounts**:
+### **List all accounts**:
 
   ```bash
   passpy
