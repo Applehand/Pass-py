@@ -1,5 +1,7 @@
 # Passpy
-Passpy is a lightweight command-line interface (CLI) tool for securely storing, retrieving, updating, and managing passwords. It uses AES encryption to protect passwords, storing them in a SQLite database.
+Passpy is a lightweight command-line interface (CLI) tool for securely storing, retrieving, updating,
+and managing passwords. It uses AES encryption from the `cryptography` library to protect passwords, 
+storing them securely in a SQLite database.
 
 ## Installation
 
