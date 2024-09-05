@@ -12,18 +12,16 @@ pip install git+https://github.com/Applehand/Pass-py.git
 
 ## Usage
 
-Run `passpy` followed by one of the available commands. The `account` argument is required for most commands.
-
 - **Add a new account**:
 
   ```bash
-  passpy add <account>
+  passpy add <account> <password>
   ```
 
   Example:
 
   ```bash
-  passpy add my_email@example.com
+  passpy add my_email@example.com thisismypassword1
   ```
 
 - **Retrieve an account password**:
@@ -41,13 +39,13 @@ Run `passpy` followed by one of the available commands. The `account` argument i
 - **Update an existing account password**:
 
   ```bash
-  passpy update <account>
+  passpy update <account> <password>
   ```
 
   Example:
 
   ```bash
-  passpy update my_email@example.com
+  passpy update my_email@example.com thisismynewpassword2
   ```
 
 - **Delete an account**:
