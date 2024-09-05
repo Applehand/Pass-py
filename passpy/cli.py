@@ -12,16 +12,16 @@ parser = argparse.ArgumentParser(
 subparsers = parser.add_subparsers(dest="command")
 
 # Add command
-parser_add = subparsers.add_parser("add", help="Add a new account.")
+parser_add = subparsers.add_parser("add", help="Add a new account and an associated password.")
 parser_add.add_argument("account", help="The username, email, or domain to be associated with a password.")
 parser_add.add_argument("password", help="The password to be securely stored and associated with an account.")
 
 # Get command
-parser_get = subparsers.add_parser("get", help="Retrieve an account password.")
+parser_get = subparsers.add_parser("get", help="Retrieve a password for an account.")
 parser_get.add_argument("account", help="The username, email, or domain to retrieve the password for.")
 
 # Update command
-parser_update = subparsers.add_parser("update", help="Generate a new password for an existing account.")
+parser_update = subparsers.add_parser("update", help="Update an existing password with a new one.")
 parser_update.add_argument("account", help="The username, email, or domain to update the password for.")
 parser_update.add_argument("password", help="The new password that will replace the old one.")
 
