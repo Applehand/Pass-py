@@ -1,6 +1,5 @@
 # Passpy
-
-Passpy is a simple and secure CLI tool for managing passwords. It allows you to add, retrieve, update, and delete passwords associated with your various accounts.
+Passpy is a lightweight command-line interface (CLI) tool for securely storing, retrieving, updating, and managing passwords. It uses AES encryption to protect passwords, storing them in a SQLite database.
 
 ## Installation
 

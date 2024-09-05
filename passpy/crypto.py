@@ -12,19 +12,17 @@ def save_fernet_key(key: bytes):
     if not os.path.exists(".env"):
         with open(".env", "w") as env_file:
             env_file.write(f"FERNET_KEY={key_str}\n")
-            print("FERNET_KEY added to new .env file.")
+        print("FERNET_KEY added to new .env file.")
     else:
-        with open(".env", "r") as env_file:
+        with open(".env", "r+") as env_file:
             lines = env_file.readlines()
-        
-        key_exists = any(line.startswith("FERNET_KEY=") for line in lines)
-        
-        if not key_exists:
-            with open(".env", "a") as env_file:
+
+            if any(line.startswith("FERNET_KEY=") for line in lines):
+                print("FERNET_KEY already exists in the .env file.")
+            else:
                 env_file.write(f"FERNET_KEY={key_str}\n")
-            print("FERNET_KEY added to existing .env file.")
-        else:
-            print("FERNET_KEY already exists in an .env file.")
+                print("FERNET_KEY added to existing .env file.")
+
 
 def get_fernet_key() -> bytes:
     if not os.path.exists(".env"):
