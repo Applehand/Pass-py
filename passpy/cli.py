@@ -37,7 +37,7 @@ args = parser.parse_args()
 def main():
     if not args.command:
         list_accounts()
-    if args.command == "add":
+    elif args.command == "add":
         add_account(args.account, args.password)
     elif args.command == "get":
         get_account(args.account)
@@ -57,13 +57,13 @@ def get_account(account):
     encryped_pass = storage.get_password(account)
     if not encryped_pass:
         print("Account not found.")
+        return
     password = crypto.decrypt_password(encryped_pass, fernet_key)
     pyperclip.copy(password)
-    print(f"Password for '{account}': {password}")
     print("Password copied to clipboard!")
 
 def update_password(account, password):
-    new_encryped_password = crypto.encrypt_password(password)
+    new_encryped_password = crypto.encrypt_password(password, fernet_key)
     storage.update_password(account, new_encryped_password)
     print(f"Password for '{account}' updated successfully.")
 
